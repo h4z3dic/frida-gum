@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2010-2019 Ole André Vadla Ravnås <oleavr@nowsecure.com>
+ * Copyright (C) 2010-2020 Ole André Vadla Ravnås <oleavr@nowsecure.com>
  * Copyright (C) 2013 Karl Trygve Kalleberg <karltk@boblycat.org>
  *
  * Licence: wxWindows Library Licence, Version 3.1
@@ -10,6 +10,7 @@
 #include "gum-init.h"
 #include "gumdukscriptbackend.h"
 #include "guminspectorserver.h"
+#include "gumquickscriptbackend.h"
 #include "gumscriptbackend.h"
 #include "valgrind.h"
 
@@ -54,7 +55,8 @@
     gchar * path;                                                         \
                                                                           \
     path = g_strconcat ("/GumJS/Script/" SCRIPT_SUITE, group, #NAME "#",  \
-        GUM_DUK_IS_SCRIPT_BACKEND (fixture_data) ? "DUK" : "V8",          \
+        GUM_QUICK_IS_SCRIPT_BACKEND (fixture_data) ? "QJS" :              \
+            GUM_DUK_IS_SCRIPT_BACKEND (fixture_data) ? "DUK" : "V8",      \
         NULL);                                                            \
                                                                           \
     g_test_add (path,                                                     \
